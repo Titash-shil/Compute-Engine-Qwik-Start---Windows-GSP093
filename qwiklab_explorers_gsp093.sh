@@ -27,18 +27,18 @@ gcloud auth list
 export ZONE=$(gcloud compute project-info describe --format="value(commonInstanceMetadata.items[google-compute-default-zone])")
 
 # Instruction to create the instance
-echo "${CYAN_TEXT}${BOLD_TEXT}Step 3:${RESET_FORMAT} ${WHITE_TEXT}Creating a new Compute Engine instance named 'qwiklab-explorers'.${RESET_FORMAT}"
-gcloud compute instances create qwiklab-explorers --project=$DEVSHELL_PROJECT_ID --zone $ZONE --machine-type=e2-medium --create-disk=auto-delete=yes,boot=yes,device-name=qwiklab-explorers,image=projects/windows-cloud/global/images/windows-server-2022-dc-v20230913,mode=rw,size=50,type=projects/$DEVSHELL_PROJECT_ID/zones/$ZONE/diskTypes/pd-balanced 
+echo "${BLUE_TEXT}${BOLD_TEXT}Step 3:${RESET_FORMAT} ${GREEN_TEXT}Creating a new Compute Engine instance named 'qwiklabexplorers'.${RESET_FORMAT}"
+gcloud compute instances create qwiklabexplorers --project=$DEVSHELL_PROJECT_ID --zone $ZONE --machine-type=e2-medium --create-disk=auto-delete=yes,boot=yes,device-name=qwiklabexplorers,image=projects/windows-cloud/global/images/windows-server-2022-dc-v20230913,mode=rw,size=50,type=projects/$DEVSHELL_PROJECT_ID/zones/$ZONE/diskTypes/pd-balanced 
 
 # Instruction to wait for the instance to initialize
 sleep 30
 
 # Instruction to get serial port output
-gcloud compute instances get-serial-port-output qwiklab-explorers --zone=$ZONE
+gcloud compute instances get-serial-port-output qwiklabexplorers --zone=$ZONE
 
 # Instruction to reset the Windows password
-gcloud compute reset-windows-password qwiklab-explorers --zone $ZONE --user admin --quiet
+gcloud compute reset-windows-password qwiklabexplorers --zone $ZONE --user admin --quiet
 
 # Completion message
 
-echo -e "${RED_TEXT}${BOLD_TEXT}Subscribe my Channel (QwikLab Explorers):${RESET_FORMAT} ${BLUE_TEXT}${BOLD_TEXT}https://www.youtube.com/@qwiklabexplorers${RESET_FORMAT}"
+echo -e "${BLUE_TEXT}${BOLD_TEXT}Subscribe my Channel (QwikLab Explorers):${RESET_FORMAT} ${GREEN_TEXT}${BOLD_TEXT}https://www.youtube.com/@qwiklabexplorers${RESET_FORMAT}"
