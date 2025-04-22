@@ -27,7 +27,6 @@ gcloud auth list
 export ZONE=$(gcloud compute project-info describe --format="value(commonInstanceMetadata.items[google-compute-default-zone])")
 
 # Instruction to create the instance
-echo "${BLUE_TEXT}${BOLD_TEXT}Step 3:${RESET_FORMAT} ${GREEN_TEXT}Creating a new Compute Engine instance named 'qwiklabexplorers'.${RESET_FORMAT}"
 gcloud compute instances create qwiklabexplorers --project=$DEVSHELL_PROJECT_ID --zone $ZONE --machine-type=e2-medium --create-disk=auto-delete=yes,boot=yes,device-name=qwiklabexplorers,image=projects/windows-cloud/global/images/windows-server-2022-dc-v20230913,mode=rw,size=50,type=projects/$DEVSHELL_PROJECT_ID/zones/$ZONE/diskTypes/pd-balanced 
 
 # Instruction to wait for the instance to initialize
